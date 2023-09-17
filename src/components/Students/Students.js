@@ -8,7 +8,7 @@ import {
   useRemoveStudentMutation,
 } from "../../redux/services/studentsApi";
 import "./Students.scss";
-import { Box, Button, Modal, Typography } from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -25,7 +25,8 @@ const style = {
 export default function Students() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
-  const [studentID, setStudentID] = useState(1);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [student, setStudent] = useState({});
 
   const { data: rows, isLoading } = useGetStudentsQuery();
   const [addStudent, { isLoading: isAddingStudent }] = useAddStudentMutation();
@@ -47,20 +48,34 @@ export default function Students() {
       width: 200,
     },
     {
+      field: "edit",
+      headerName: "ویرایش",
+      width: 50,
+      renderCell: (params) => {
+        return (
+          <EditIcon
+            className="actionIcons studentEditIcon"
+            onClick={() => {
+              setStudent(params.row);
+              setOpenEditModal(true);
+            }}
+          />
+        );
+      },
+    },
+    {
       field: "delete",
       headerName: "حذف",
       width: 50,
       renderCell: (params) => {
         return (
-          <>
-            <DeleteOutlineIcon
-              className="actionIcons studentDeleteIcon"
-              onClick={() => {
-                setStudentID(params.row.id);
-                setOpenDeleteModal(true);
-              }}
-            />
-          </>
+          <DeleteOutlineIcon
+            className="actionIcons studentDeleteIcon"
+            onClick={() => {
+              setStudent(params.row);
+              setOpenDeleteModal(true);
+            }}
+          />
         );
       },
     },
@@ -90,7 +105,6 @@ export default function Students() {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              checkboxSelection
             />
           </div>
         )}
@@ -114,7 +128,7 @@ export default function Students() {
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <Button
               onClick={() => {
-                removeStudent(studentID);
+                removeStudent(student.id);
                 if (!isRemovingStudent) {
                   setOpenDeleteModal(false);
                 }
@@ -134,6 +148,76 @@ export default function Students() {
           </div>
         </Box>
       </Modal>
+
+      {/* Edit Modal */}
+      <Modal
+            open={openEditModal}
+            onClose={() => setOpenEditModal(false)}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+         >
+            <Box sx={style}>
+               <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Edit User
+               </Typography>
+               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  Enter new user information's.
+               </Typography>
+               <br />
+               <div dir="rtl">
+               <TextField
+                  fullWidth
+                  label="نام"
+                  id="fullWidth"
+                  value={student.name}
+                  onChange={(event) => setStudent(prevStudent=>(console.log(prevStudent)))}
+                  sx={{ pb: 2 }}
+               />
+               <TextField
+                  fullWidth
+                  label="نام خانوادگی"
+                  id="fullWidth"
+                  value={student.family}
+                  onChange={(event) => setStudent(event.target.value)}
+                  sx={{ pb: 2 }}
+               />
+               <TextField
+                  fullWidth
+                  label="رشته تحصیلی"
+                  id="fullWidth"
+                  value={student.fieldOfStudy}
+                  onChange={(event) => setStudent(event.target.value)}
+                  sx={{ pb: 2 }}
+               />
+               <TextField
+                  fullWidth
+                  label="شماره دانشجویی"
+                  id="fullWidth"
+                  value={student.studentNumber}
+                  onChange={(event) => setStudent(event.target.value)}
+                  sx={{ pb: 2 }}
+               />
+               </div>
+               <br />
+               <br />
+               <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                  <Button
+                     onClick={() => editUser()}
+                     variant="contained"
+                     color="success"
+                  >
+                     Edit
+                  </Button>
+                  <Button
+                     onClick={() => setOpenEditModal(false)}
+                     variant="contained"
+                     color="error"
+                  >
+                     Cancel
+                  </Button>
+               </div>
+            </Box>
+         </Modal>
     </>
   );
 }
