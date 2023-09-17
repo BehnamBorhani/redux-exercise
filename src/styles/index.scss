@@ -15,14 +15,13 @@
 html {
    scroll-behavior: smooth;
    scroll-padding-top: 50px;
-   font-size: 10px;
    font-family: "Roboto";
+   direction: rtl;
 }
 
 body {
    overflow-x: hidden;
    background-color: #fff;
-   font-size: 1.6rem;
 
    /* width */
    &::-webkit-scrollbar {
