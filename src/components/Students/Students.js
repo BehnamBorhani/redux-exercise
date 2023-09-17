@@ -24,10 +24,12 @@ const style = {
 };
 
 export default function Students() {
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [openAddModal, setOpenAddModal] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
   const [student, setStudent] = useState({});
+  const [openModals, setOpenModals] = useState({
+    add: false,
+    edit: false,
+    delete: false,
+  });
 
   const { data: rows, isLoading } = useGetStudentsQuery();
   const [addStudent, { isLoading: isAddingStudent }] = useAddStudentMutation();
@@ -58,7 +60,7 @@ export default function Students() {
             className="actionIcons studentEditIcon"
             onClick={() => {
               setStudent(params.row);
-              setOpenEditModal(true);
+              setOpenModals((prevState) => ({ ...prevState, edit: true }));
             }}
           />
         );
@@ -74,7 +76,7 @@ export default function Students() {
             className="actionIcons studentDeleteIcon"
             onClick={() => {
               setStudent(params.row);
-              setOpenDeleteModal(true);
+              setOpenModals((prevState) => ({ ...prevState, delete: true }));
             }}
           />
         );
@@ -88,7 +90,10 @@ export default function Students() {
         <div className="header">
           <h1 className="title">لیست دانشجویان</h1>
           <Button
-            onClick={() => setOpenAddModal(true)}
+            onClick={() => {
+              setOpenModals((prevState) => ({ ...prevState, add: true }));
+              setStudent({});
+            }}
             variant="contained"
             color="success"
           >
@@ -113,8 +118,10 @@ export default function Students() {
 
       {/* Delete Modal */}
       <Modal
-        open={openDeleteModal}
-        onClose={() => setOpenDeleteModal(false)}
+        open={openModals.delete}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, delete: false }))
+        }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -131,7 +138,10 @@ export default function Students() {
               onClick={() => {
                 removeStudent(student.id);
                 if (!isRemovingStudent) {
-                  setOpenDeleteModal(false);
+                  setOpenModals((prevState) => ({
+                    ...prevState,
+                    delete: false,
+                  }));
                 }
               }}
               variant="contained"
@@ -140,7 +150,9 @@ export default function Students() {
               بله
             </Button>
             <Button
-              onClick={() => setOpenDeleteModal(false)}
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, delete: false }))
+              }
               variant="contained"
               color="success"
             >
@@ -152,8 +164,10 @@ export default function Students() {
 
       {/* Edit Modal */}
       <Modal
-        open={openEditModal}
-        onClose={() => setOpenEditModal(false)}
+        open={openModals.edit}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, edit: false }))
+        }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -162,7 +176,7 @@ export default function Students() {
             ویرایش دانشجو
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-           اطلاعات جدید دانشجو را وارد نمایید.
+            اطلاعات جدید دانشجو را وارد نمایید.
           </Typography>
           <br />
           <div dir="rtl">
@@ -225,7 +239,7 @@ export default function Students() {
             <Button
               onClick={() => {
                 editStudent(student);
-                setOpenEditModal(false);
+                setOpenModals((prevState) => ({ ...prevState, edit: false }));
               }}
               variant="contained"
               color="success"
@@ -233,7 +247,106 @@ export default function Students() {
               ویرایش
             </Button>
             <Button
-              onClick={() => setOpenEditModal(false)}
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, edit: false }))
+              }
+              variant="contained"
+              color="error"
+            >
+              کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
+
+      {/* add new student Modal */}
+      <Modal
+        open={openModals.add}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, add: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            افزودن دانجشو
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            مشخصات دانشجو را وارد نمایید
+          </Typography>
+          <br />
+          <div dir="rtl">
+            <TextField
+              fullWidth
+              label="نام"
+              id="fullWidth"
+              value={student.name}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  name: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="نام خانوادگی"
+              id="fullWidth"
+              value={student.family}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  family: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="رشته تحصیلی"
+              id="fullWidth"
+              value={student.fieldOfStudy}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  fieldOfStudy: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="شماره دانشجویی"
+              id="fullWidth"
+              value={student.studentNumber}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  studentNumber: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+          </div>
+          <br />
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                addStudent(student);
+                setOpenModals((prevState) => ({ ...prevState, add: false }));
+              }}
+              variant="contained"
+              color="success"
+            >
+              افزودن
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, add: false }))
+              }
               variant="contained"
               color="error"
             >
