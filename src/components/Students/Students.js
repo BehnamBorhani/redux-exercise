@@ -24,6 +24,7 @@ const style = {
 
 export default function Students() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openAddModal, setOpenAddModal] = useState(false);
   const [studentID, setStudentID] = useState(1);
 
   const { data: rows, isLoading } = useGetStudentsQuery();
@@ -68,7 +69,16 @@ export default function Students() {
   return (
     <>
       <section id="students">
-        <h1 className="title">لیست دانشجویان</h1>
+        <div className="header">
+          <h1 className="title">لیست دانشجویان</h1>
+          <Button
+            onClick={() => setOpenAddModal(true)}
+            variant="contained"
+            color="success"
+          >
+            افزودن دانشجو
+          </Button>
+        </div>
         {rows?.length && (
           <div className="table">
             <DataGrid
