@@ -32,7 +32,7 @@ export default function Students() {
     useRemoveStudentMutation();
 
   const columns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { field: "id", headerName: "#", width: 70 },
     { field: "name", headerName: "نام", width: 130 },
     { field: "family", headerName: "نام خانوادگی", width: 130 },
     {
@@ -68,19 +68,21 @@ export default function Students() {
   return (
     <>
       <section id="students">
-        <h1>لیست دانشجویان</h1>
+        <h1 className="title">لیست دانشجویان</h1>
         {rows?.length && (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
-              },
-            }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-          />
+          <div className="table">
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}
+              pageSizeOptions={[5, 10]}
+              checkboxSelection
+            />
+          </div>
         )}
       </section>
 
