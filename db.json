@@ -1,0 +1,32 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "بهنام",
+      "family": "برهانی",
+      "fieldOfStudy": "مهندسی کامپیوتر",
+      "studentNumber": "39915041054033"
+    },
+    {
+      "id": 2,
+      "name": "صبا",
+      "family": "مختاری",
+      "fieldOfStudy": "طراحی",
+      "studentNumber": "39915041054078"
+    },
+    {
+      "id": 3,
+      "name": "عرفان",
+      "family": "رضایی",
+      "fieldOfStudy": "مهندسی کامپیوتر",
+      "studentNumber": "40215041054033"
+    },
+    {
+      "id": 4,
+      "name": "حسین",
+      "family": "صانعی",
+      "fieldOfStudy": "مهندسی مکانیک",
+      "studentNumber": "39915041054033"
+    }
+  ]
+}

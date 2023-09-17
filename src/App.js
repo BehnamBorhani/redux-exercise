@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      {router}
+      <div className="container">{router}</div>
     </>
   );
 }
