@@ -4,6 +4,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import {
   useAddStudentMutation,
+  useEditStudentMutation,
   useGetStudentsQuery,
   useRemoveStudentMutation,
 } from "../../redux/services/studentsApi";
@@ -30,8 +31,8 @@ export default function Students() {
 
   const { data: rows, isLoading } = useGetStudentsQuery();
   const [addStudent, { isLoading: isAddingStudent }] = useAddStudentMutation();
-  const [removeStudent, { isLoading: isRemovingStudent }] =
-    useRemoveStudentMutation();
+  const [editStudent, { isLoading: isEditingStudent }] = useEditStudentMutation();
+  const [removeStudent, { isLoading: isRemovingStudent }] = useRemoveStudentMutation();
 
   const columns = [
     { field: "id", headerName: "#", width: 70 },
@@ -151,73 +152,96 @@ export default function Students() {
 
       {/* Edit Modal */}
       <Modal
-            open={openEditModal}
-            onClose={() => setOpenEditModal(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-         >
-            <Box sx={style}>
-               <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Edit User
-               </Typography>
-               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Enter new user information's.
-               </Typography>
-               <br />
-               <div dir="rtl">
-               <TextField
-                  fullWidth
-                  label="نام"
-                  id="fullWidth"
-                  value={student.name}
-                  onChange={(event) => setStudent(prevStudent=>(console.log(prevStudent)))}
-                  sx={{ pb: 2 }}
-               />
-               <TextField
-                  fullWidth
-                  label="نام خانوادگی"
-                  id="fullWidth"
-                  value={student.family}
-                  onChange={(event) => setStudent(event.target.value)}
-                  sx={{ pb: 2 }}
-               />
-               <TextField
-                  fullWidth
-                  label="رشته تحصیلی"
-                  id="fullWidth"
-                  value={student.fieldOfStudy}
-                  onChange={(event) => setStudent(event.target.value)}
-                  sx={{ pb: 2 }}
-               />
-               <TextField
-                  fullWidth
-                  label="شماره دانشجویی"
-                  id="fullWidth"
-                  value={student.studentNumber}
-                  onChange={(event) => setStudent(event.target.value)}
-                  sx={{ pb: 2 }}
-               />
-               </div>
-               <br />
-               <br />
-               <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                  <Button
-                     onClick={() => editUser()}
-                     variant="contained"
-                     color="success"
-                  >
-                     Edit
-                  </Button>
-                  <Button
-                     onClick={() => setOpenEditModal(false)}
-                     variant="contained"
-                     color="error"
-                  >
-                     Cancel
-                  </Button>
-               </div>
-            </Box>
-         </Modal>
+        open={openEditModal}
+        onClose={() => setOpenEditModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            ویرایش دانشجو
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+           اطلاعات جدید دانشجو را وارد نمایید.
+          </Typography>
+          <br />
+          <div dir="rtl">
+            <TextField
+              fullWidth
+              label="نام"
+              id="fullWidth"
+              value={student.name}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  name: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="نام خانوادگی"
+              id="fullWidth"
+              value={student.family}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  family: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="رشته تحصیلی"
+              id="fullWidth"
+              value={student.fieldOfStudy}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  fieldOfStudy: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="شماره دانشجویی"
+              id="fullWidth"
+              value={student.studentNumber}
+              onChange={(event) =>
+                setStudent((prevState) => ({
+                  ...prevState,
+                  studentNumber: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+          </div>
+          <br />
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                editStudent(student);
+                setOpenEditModal(false);
+              }}
+              variant="contained"
+              color="success"
+            >
+              ویرایش
+            </Button>
+            <Button
+              onClick={() => setOpenEditModal(false)}
+              variant="contained"
+              color="error"
+            >
+              کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 }

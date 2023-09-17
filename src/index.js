@@ -13,6 +13,7 @@ const cacheRtl = createCache({
   key: "muirtl",
   stylisPlugins: [prefixer, rtlPlugin],
 });
+
 const theme = createTheme({
   direction: "rtl",
 });
