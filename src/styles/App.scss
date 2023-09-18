@@ -1,4 +1,24 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
 .title {
-   font-size: 2rem;
-   margin: 2rem 0;
+  font-size: 2rem;
+  margin: 2rem 0;
+  display: inline-block;
+}
+
+.table {
+  width: fit-content;
+}
+
+.deleteIcon {
+  color: red;
+}
+
+.editIcon {
+  color: green;
 }

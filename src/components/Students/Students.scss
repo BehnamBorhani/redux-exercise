@@ -1,25 +1,3 @@
-.actionIcons{
-
-}
-.studentDeleteIcon{
-   color: red;
-}
-.studentEditIcon{
-   color: green;
-}
-
 #students {
-   .header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 2rem;
-      .title {
-         display: inline-block;
-      }
-   }
    
-   .table {
-      width: fit-content;
-   }
 }

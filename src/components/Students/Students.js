@@ -31,10 +31,12 @@ export default function Students() {
     delete: false,
   });
 
-  const { data: rows, isLoading } = useGetStudentsQuery();
+  const { data: students, isLoading } = useGetStudentsQuery();
   const [addStudent, { isLoading: isAddingStudent }] = useAddStudentMutation();
-  const [editStudent, { isLoading: isEditingStudent }] = useEditStudentMutation();
-  const [removeStudent, { isLoading: isRemovingStudent }] = useRemoveStudentMutation();
+  const [editStudent, { isLoading: isEditingStudent }] =
+    useEditStudentMutation();
+  const [removeStudent, { isLoading: isRemovingStudent }] =
+    useRemoveStudentMutation();
 
   const columns = [
     { field: "id", headerName: "#", width: 70 },
@@ -57,7 +59,7 @@ export default function Students() {
       renderCell: (params) => {
         return (
           <EditIcon
-            className="actionIcons studentEditIcon"
+            className="actionIcons editIcon"
             onClick={() => {
               setStudent(params.row);
               setOpenModals((prevState) => ({ ...prevState, edit: true }));
@@ -73,7 +75,7 @@ export default function Students() {
       renderCell: (params) => {
         return (
           <DeleteOutlineIcon
-            className="actionIcons studentDeleteIcon"
+            className="actionIcons deleteIcon"
             onClick={() => {
               setStudent(params.row);
               setOpenModals((prevState) => ({ ...prevState, delete: true }));
@@ -100,10 +102,10 @@ export default function Students() {
             افزودن دانشجو
           </Button>
         </div>
-        {rows?.length && (
+        {students?.length && (
           <div className="table">
             <DataGrid
-              rows={rows}
+              rows={students}
               columns={columns}
               initialState={{
                 pagination: {
