@@ -56,5 +56,109 @@
       "studentNumber": "973164958426",
       "id": 8
     }
+  ],
+
+  "courses": [
+    {
+      "id": 1,
+      "name": "برنامه سازی پیشرفته",
+      "NumberOfUnits": 3,
+      "code": 879546,
+      "professorId": 1
+    },
+    {
+      "id": 2,
+      "name": "تعامل انسان و کامپیوتر",
+      "NumberOfUnits": 2,
+      "code": 13989753,
+      "professorId": 2
+    },
+    {
+      "id": 3,
+      "name": "طراحی شی‌گرا سیستم‌ها",
+      "NumberOfUnits": 3,
+      "code": 879546,
+      "professorId": 3
+    },
+    {
+      "id": 4,
+      "name": "مدار الکتریکی",
+      "NumberOfUnits": 3,
+      "code": 879546,
+      "professorId": 2
+    },
+    {
+      "id": 5,
+      "name": "آزمون نرم افزار",
+      "NumberOfUnits": 3,
+      "code": 460983321,
+      "professorId": 4
+    },
+    {
+      "id": 6,
+      "name": "نظریه زبان‌ها و ماشین‌ها",
+      "NumberOfUnits": 3,
+      "code": 879546,
+      "professorId": 6
+    },
+    {
+      "id": 7,
+      "name": "کارگاه کامپیوتر",
+      "NumberOfUnits": 1,
+      "code": 6321478,
+      "professorId": 7
+    }
+  ],
+
+  "professors": [
+    {
+      "id": 1,
+      "name": "احمد",
+      "family": "شفیعی",
+      "personnelID": 159753,
+      "courseId": 1
+    },
+    {
+      "id": 2,
+      "name": "الهام",
+      "family": "یعقوبی",
+      "personnelID": 951357,
+      "courseId": 4
+    },
+    {
+      "id": 3,
+      "name": "حسین",
+      "family": "هادی پور",
+      "personnelID": 62488426,
+      "courseId": 3
+    },
+    {
+      "id": 4,
+      "name": "شهره",
+      "family": "آجودانیان",
+      "personnelID": 741963,
+      "courseId": 5
+    },
+    {
+      "id": 5,
+      "name": "مهدی",
+      "family": "شریفی",
+      "personnelID": 963147,
+      "courseId": 2
+    },
+    {
+      "id": 6,
+      "name": "مهدی",
+      "family": "جبل عاملی",
+      "personnelID": 8741369,
+      "courseId": 6
+    },
+    {
+      "id": 7,
+      "name": "علیرضا",
+      "family": "نیکیان",
+      "personnelID": 987123,
+      "courseId": 7
+    }
   ]
 }
