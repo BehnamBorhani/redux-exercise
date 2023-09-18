@@ -13,7 +13,7 @@ const professorsApi = createApi({
       query: (newProfessor) => ({
         url: "professors",
         method: "POST",
-        body: newProfessor,
+        body: { ...newProfessor, courses: newProfessor.courses.split(" - ") },
       }),
       invalidatesTags: ["Professors"],
     }),
