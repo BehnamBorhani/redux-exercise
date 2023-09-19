@@ -36,3 +36,11 @@ const coursesApi = createApi({
     }),
   }),
 });
+
+export default coursesApi;
+export const {
+  useGetCoursesQuery,
+  useAddCourseMutation,
+  useEditCourseMutation,
+  useRemoveCourseMutation,
+} = coursesApi;
