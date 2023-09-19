@@ -42,6 +42,7 @@ const Courses = () => {
     { field: "name", headerName: "نام درس", width: 200 },
     { field: "NumberOfUnits", headerName: "تعداد واحد", width: 100 },
     { field: "code", headerName: "کد درس", width: 150 },
+    { field: "professor", headerName: "استاد درس", width: 150 },
     {
       field: "edit",
       headerName: "ویرایش",

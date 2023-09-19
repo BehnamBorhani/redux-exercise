@@ -63,49 +63,49 @@
       "name": "برنامه سازی پیشرفته",
       "NumberOfUnits": 3,
       "code": 879546,
-      "professorId": 1
+      "professor": "احمد شفیعی"
     },
     {
       "id": 2,
       "name": "تعامل انسان و کامپیوتر",
       "NumberOfUnits": 2,
       "code": 13989753,
-      "professorId": 2
+      "professor": "مهدی شریفی"
     },
     {
       "id": 3,
       "name": "طراحی شی‌گرا سیستم‌ها",
       "NumberOfUnits": 3,
       "code": 879546,
-      "professorId": 3
+      "professor": "حسین هادی پور"
     },
     {
       "id": 4,
       "name": "مدار الکتریکی",
       "NumberOfUnits": 3,
       "code": 879546,
-      "professorId": 2
+      "professor": "الهام یعقوبی"
     },
     {
       "id": 5,
       "name": "آزمون نرم افزار",
       "NumberOfUnits": 3,
       "code": 460983321,
-      "professorId": 4
+      "professor": "شهره آجودانیان"
     },
     {
       "id": 6,
       "name": "نظریه زبان‌ها و ماشین‌ها",
       "NumberOfUnits": 3,
       "code": 879546,
-      "professorId": 6
+      "professor": "مهدی جبل عاملی"
     },
     {
       "id": 7,
       "name": "کارگاه کامپیوتر",
       "NumberOfUnits": 1,
       "code": 6321478,
-      "professorId": 7
+      "professor": "علیرضا نیکیان"
     }
   ],
   "professors": [
@@ -138,11 +138,7 @@
       "name": "حسین",
       "family": "هادی پور",
       "personnelID": 62488426,
-      "courses": [
-        "تحلیل طراحی سیستم‌ها",
-        "ساختمان داده",
-        "پایگاه داده"
-      ],
+      "courses": ["تحلیل طراحی سیستم‌ها", "ساختمان داده", "پایگاه داده"],
       "courseId": 3
     },
     {
@@ -162,9 +158,7 @@
       "name": "مهدی",
       "family": "شریفی",
       "personnelID": 963147,
-      "courses": [
-        "تعامل انسان و کامپیوتر"
-      ],
+      "courses": ["تعامل انسان و کامپیوتر"],
       "courseId": 2
     },
     {
@@ -184,11 +178,7 @@
       "name": "علیرضا",
       "family": "نیکیان",
       "personnelID": 987123,
-      "courses": [
-        "سیستم عامل",
-        "مبانی کامپیوتر",
-        "کارگاه کامپیوتر"
-      ],
+      "courses": ["سیستم عامل", "مبانی کامپیوتر", "کارگاه کامپیوتر"],
       "courseId": 7
     }
   ]
