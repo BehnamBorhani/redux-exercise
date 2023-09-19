@@ -53,6 +53,25 @@ const Professors = () => {
     },
     { field: "personnelID", headerName: "شماره پرسنلی", width: 200 },
     {
+      field: "edit",
+      headerName: "ویرایش",
+      width: 50,
+      renderCell: (params) => {
+        return (
+          <EditIcon
+            className="actionIcons editIcon"
+            onClick={() => {
+              setProfessor({
+                ...params.row,
+                courses: params.row.courses.join(" - "),
+              });
+              setOpenModals((prevState) => ({ ...prevState, edit: true }));
+            }}
+          />
+        );
+      },
+    },
+    {
       field: "delete",
       headerName: "حذف",
       width: 50,
@@ -189,6 +208,103 @@ const Professors = () => {
             <Button
               onClick={() =>
                 setOpenModals((prevState) => ({ ...prevState, add: false }))
+              }
+              variant="contained"
+              color="error"
+            >
+              کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
+
+      {/* Edit Modal */}
+      <Modal
+        open={openModals.edit}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, edit: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            ویرایش استاد
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            اطلاعات جدید استاد را وارد نمایید.
+          </Typography>
+          <br />
+          <div dir="rtl">
+            <TextField
+              fullWidth
+              label="نام"
+              id="fullWidth"
+              value={professor.name}
+              onChange={(event) =>
+                setProfessor((prevState) => ({
+                  ...prevState,
+                  name: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="نام خانوادگی"
+              id="fullWidth"
+              value={professor.family}
+              onChange={(event) =>
+                setProfessor((prevState) => ({
+                  ...prevState,
+                  family: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="مدرس دروس"
+              id="fullWidth"
+              value={professor.courses}
+              onChange={(event) =>
+                setProfessor((prevState) => ({
+                  ...prevState,
+                  courses: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="شماره پرسنلی"
+              id="fullWidth"
+              value={professor.personnelID}
+              onChange={(event) =>
+                setProfessor((prevState) => ({
+                  ...prevState,
+                  personnelID: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+          </div>
+          <br />
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                editProfessor(professor);
+                setOpenModals((prevState) => ({ ...prevState, edit: false }));
+              }}
+              variant="contained"
+              color="success"
+            >
+              ویرایش
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, edit: false }))
               }
               variant="contained"
               color="error"

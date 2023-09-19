@@ -22,7 +22,7 @@ const professorsApi = createApi({
       query: (professor) => ({
         url: `professors/${professor.id}`,
         method: "PUT",
-        body: professor,
+        body: { ...professor, courses: professor.courses.split(" - ") },
       }),
       invalidatesTags: ["Professors"],
     }),
