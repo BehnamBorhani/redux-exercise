@@ -205,6 +205,103 @@ const Courses = () => {
           </div>
         </Box>
       </Modal>
+
+      {/* Edit Modal */}
+      <Modal
+        open={openModals.edit}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, edit: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            ویرایش درس
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            اطلاعات جدید درس را وارد نمایید.
+          </Typography>
+          <br />
+          <div dir="rtl">
+            <TextField
+              fullWidth
+              label="نام"
+              id="fullWidth"
+              value={course.name}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  name: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="تعداد واحد"
+              id="fullWidth"
+              value={course.NumberOfUnits}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  NumberOfUnits: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="کد درس"
+              id="fullWidth"
+              value={course.code}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  code: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="استاد درس"
+              id="fullWidth"
+              value={course.professor}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  professor: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+          </div>
+          <br />
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                editCourse(course);
+                setOpenModals((prevState) => ({ ...prevState, edit: false }));
+              }}
+              variant="contained"
+              color="success"
+            >
+              ویرایش
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, edit: false }))
+              }
+              variant="contained"
+              color="error"
+            >
+              کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 };
