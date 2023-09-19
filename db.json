@@ -61,51 +61,82 @@
     {
       "id": 1,
       "name": "برنامه سازی پیشرفته",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "احمد شفیعی"
+      "professor": "احمد شفیعی",
+      "selected": false
     },
     {
       "id": 2,
       "name": "تعامل انسان و کامپیوتر",
-      "NumberOfUnits": 2,
+      "numberOfUnits": 2,
       "code": 13989753,
-      "professor": "مهدی شریفی"
+      "professor": "مهدی شریفی",
+      "selected": false
     },
     {
       "id": 3,
       "name": "طراحی شی‌گرا سیستم‌ها",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "حسین هادی پور"
+      "professor": "حسین هادی پور",
+      "selected": false
     },
     {
       "id": 4,
       "name": "مدار الکتریکی",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "الهام یعقوبی"
+      "professor": "الهام یعقوبی",
+      "selected": false
     },
     {
       "id": 5,
       "name": "آزمون نرم افزار",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 460983321,
-      "professor": "شهره آجودانیان"
+      "professor": "شهره آجودانیان",
+      "selected": false
     },
     {
       "id": 6,
       "name": "نظریه زبان‌ها و ماشین‌ها",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "مهدی جبل عاملی"
+      "professor": "مهدی جبل عاملی",
+      "selected": false
     },
     {
       "id": 7,
       "name": "کارگاه کامپیوتر",
-      "NumberOfUnits": 1,
+      "numberOfUnits": 1,
       "code": 6321478,
-      "professor": "علیرضا نیکیان"
+      "professor": "علیرضا نیکیان",
+      "selected": false
+    },
+    {
+      "name": "آزمایشگاه مدار منطقی",
+      "numberOfUnits": 2,
+      "code": "8796565",
+      "professor": "متین نورمحمدی",
+      "id": 8,
+      "selected": false
+    },
+    {
+      "name": "تربیت بدنی",
+      "numberOfUnits": 1,
+      "code": "7999864",
+      "professor": "محسن سلطانی",
+      "id": 9,
+      "selected": false
+    },
+    {
+      "name": "مبانی کامپیوتر",
+      "numberOfUnits": 4,
+      "code": "794649",
+      "professor": "فیروزه عبداللهی",
+      "id": 10,
+      "selected": false
     }
   ],
   "professors": [
