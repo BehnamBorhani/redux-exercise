@@ -108,6 +108,103 @@ const Courses = () => {
           </div>
         )}
       </section>
+
+      {/* add new course Modal */}
+      <Modal
+        open={openModals.add}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, add: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            افزودن درس
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            مشخصات درس را وارد نمایید
+          </Typography>
+          <br />
+          <div dir="rtl">
+            <TextField
+              fullWidth
+              label="نام"
+              id="fullWidth"
+              value={course.name}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  name: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="تعداد واحد"
+              id="fullWidth"
+              value={course.NumberOfUnits}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  NumberOfUnits: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="کد درس"
+              id="fullWidth"
+              value={course.code}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  code: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+            <TextField
+              fullWidth
+              label="استاد درس"
+              id="fullWidth"
+              value={course.professor}
+              onChange={(event) =>
+                setCourse((prevState) => ({
+                  ...prevState,
+                  professor: event.target.value,
+                }))
+              }
+              sx={{ pb: 2 }}
+            />
+          </div>
+          <br />
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                addCourse(course);
+                setOpenModals((prevState) => ({ ...prevState, add: false }));
+              }}
+              variant="contained"
+              color="success"
+            >
+              افزودن
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, add: false }))
+              }
+              variant="contained"
+              color="error"
+            >
+              کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 };
