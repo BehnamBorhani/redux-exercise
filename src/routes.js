@@ -1,12 +1,12 @@
 import Students from "./components/Students/Students";
 import Professors from "./components/Professors/Professors";
-import Lessons from "./components/Lessons/Lessons";
+import Courses from "./components/Courses/Courses";
 import SelectUnit from "./components/SelectUnit/SelectUnit";
 
 const routes = [
   { path: "/students", element: <Students /> },
   { path: "/professors", element: <Professors /> },
-  { path: "/lessons", element: <Lessons /> },
+  { path: "/lessons", element: <Courses /> },
   { path: "/select-unit", element: <SelectUnit /> },
 ];
 
