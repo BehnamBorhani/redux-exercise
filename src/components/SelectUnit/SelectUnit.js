@@ -28,14 +28,19 @@ const SelectUnit = () => {
       headerName: "انتخاب",
       width: 50,
       renderCell: (params) => {
-        if (params.row.selected) {
+        const course = params.row;
+        if (course.selected) {
           return (
             <Tooltip title="حذف" placement="right" arrow>
               <CloseIcon
                 className="actionIcons deleteIcon"
                 onClick={() => {
-                  dispatch(unselect(params.row?.numberOfUnits));
-                  editCourse({ ...params.row, selected: false });
+                  if (count - course.numberOfUnits >= 0) {
+                    dispatch(unselect(course?.numberOfUnits));
+                    editCourse({ ...course, selected: false });
+                  } else {
+                    alert("شما هنوز هیچ واحدی انتخاب نکرده اید");
+                  }
                 }}
               />
             </Tooltip>
@@ -46,8 +51,12 @@ const SelectUnit = () => {
               <DoneIcon
                 className="actionIcons editIcon"
                 onClick={() => {
-                  dispatch(select(params.row?.numberOfUnits));
-                  editCourse({ ...params.row, selected: true });
+                  if (count + course.numberOfUnits <= 20) {
+                    dispatch(select(course?.numberOfUnits));
+                    editCourse({ ...course, selected: true });
+                  } else {
+                    alert("شما مجاز به انتخاب بیشتر از 20 واحد نیستید");
+                  }
                 }}
               />
             </Tooltip>

@@ -141,6 +141,7 @@ const Courses = () => {
               sx={{ pb: 2 }}
             />
             <TextField
+              type="number"
               fullWidth
               label="تعداد واحد"
               id="fullWidth"
@@ -154,6 +155,7 @@ const Courses = () => {
               sx={{ pb: 2 }}
             />
             <TextField
+              type="number"
               fullWidth
               label="کد درس"
               id="fullWidth"
@@ -238,6 +240,7 @@ const Courses = () => {
               sx={{ pb: 2 }}
             />
             <TextField
+              type="number"
               fullWidth
               label="تعداد واحد"
               id="fullWidth"
@@ -251,6 +254,7 @@ const Courses = () => {
               sx={{ pb: 2 }}
             />
             <TextField
+              type="number"
               fullWidth
               label="کد درس"
               id="fullWidth"
