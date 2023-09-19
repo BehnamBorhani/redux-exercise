@@ -61,51 +61,89 @@
     {
       "id": 1,
       "name": "برنامه سازی پیشرفته",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "احمد شفیعی"
+      "professor": "احمد شفیعی",
+      "selected": true
     },
     {
       "id": 2,
       "name": "تعامل انسان و کامپیوتر",
-      "NumberOfUnits": 2,
+      "numberOfUnits": 2,
       "code": 13989753,
-      "professor": "مهدی شریفی"
+      "professor": "مهدی شریفی",
+      "selected": true
     },
     {
       "id": 3,
       "name": "طراحی شی‌گرا سیستم‌ها",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "حسین هادی پور"
+      "professor": "حسین هادی پور",
+      "selected": true
     },
     {
       "id": 4,
       "name": "مدار الکتریکی",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "الهام یعقوبی"
+      "professor": "الهام یعقوبی",
+      "selected": true
     },
     {
       "id": 5,
       "name": "آزمون نرم افزار",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 460983321,
-      "professor": "شهره آجودانیان"
+      "professor": "شهره آجودانیان",
+      "selected": true
     },
     {
       "id": 6,
       "name": "نظریه زبان‌ها و ماشین‌ها",
-      "NumberOfUnits": 3,
+      "numberOfUnits": 3,
       "code": 879546,
-      "professor": "مهدی جبل عاملی"
+      "professor": "مهدی جبل عاملی",
+      "selected": true
     },
     {
       "id": 7,
       "name": "کارگاه کامپیوتر",
-      "NumberOfUnits": 1,
+      "numberOfUnits": 1,
       "code": 6321478,
-      "professor": "علیرضا نیکیان"
+      "professor": "علیرضا نیکیان",
+      "selected": false
+    },
+    {
+      "name": "مبانی کامپیوتر",
+      "numberOfUnits": "4",
+      "code": "498797564",
+      "professor": "فیروزه عبداللهی",
+      "id": 8,
+      "selected": false
+    },
+    {
+      "name": "اندیشه اسلامی 1",
+      "numberOfUnits": "2",
+      "code": "798461",
+      "professor": "محمد کریمی",
+      "id": 9,
+      "selected": false
+    },
+    {
+      "name": "تربیت بدنی",
+      "numberOfUnits": "1",
+      "code": "989443",
+      "professor": "علی کریمی",
+      "id": 10,
+      "selected": false
+    },
+    {
+      "name": "آزمایشگاه مدار منطقی",
+      "numberOfUnits": "1",
+      "code": "1232142",
+      "professor": "متین نورمحمدی",
+      "id": 11
     }
   ],
   "professors": [

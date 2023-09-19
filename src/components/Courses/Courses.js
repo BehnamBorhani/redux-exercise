@@ -40,7 +40,7 @@ const Courses = () => {
   const columns = [
     { field: "id", headerName: "#", width: 70 },
     { field: "name", headerName: "نام درس", width: 200 },
-    { field: "NumberOfUnits", headerName: "تعداد واحد", width: 100 },
+    { field: "numberOfUnits", headerName: "تعداد واحد", width: 100 },
     { field: "code", headerName: "کد درس", width: 150 },
     { field: "professor", headerName: "استاد درس", width: 150 },
     {
@@ -129,7 +129,7 @@ const Courses = () => {
           <div dir="rtl">
             <TextField
               fullWidth
-              label="نام"
+              label="نام درس"
               id="fullWidth"
               value={course.name}
               onChange={(event) =>
@@ -144,11 +144,11 @@ const Courses = () => {
               fullWidth
               label="تعداد واحد"
               id="fullWidth"
-              value={course.NumberOfUnits}
+              value={course.numberOfUnits}
               onChange={(event) =>
                 setCourse((prevState) => ({
                   ...prevState,
-                  NumberOfUnits: event.target.value,
+                  numberOfUnits: event.target.value,
                 }))
               }
               sx={{ pb: 2 }}
@@ -226,7 +226,7 @@ const Courses = () => {
           <div dir="rtl">
             <TextField
               fullWidth
-              label="نام"
+              label="نام درس"
               id="fullWidth"
               value={course.name}
               onChange={(event) =>
@@ -241,11 +241,11 @@ const Courses = () => {
               fullWidth
               label="تعداد واحد"
               id="fullWidth"
-              value={course.NumberOfUnits}
+              value={course.numberOfUnits}
               onChange={(event) =>
                 setCourse((prevState) => ({
                   ...prevState,
-                  NumberOfUnits: event.target.value,
+                  numberOfUnits: event.target.value,
                 }))
               }
               sx={{ pb: 2 }}
