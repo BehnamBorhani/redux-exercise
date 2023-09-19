@@ -4,18 +4,18 @@ const selectUnitCounterSlice = createSlice({
   name: "counter",
   initialState: { count: 0 },
   reducers: {
-    select: (state) => {
-      if (state.count < 20) {
-        state.count += 1;
+    select: (state, action) => {
+      if (state.count + action.payload <= 20) {
+        state.count += action.payload;
       }
     },
-    unselect: (state) => {
-      if (state.count > 0) {
-        state.count -= 1;
+    unselect: (state, action) => {
+      if (state.count - action.payload >= 0) {
+        state.count -= action.payload;
       }
     },
   },
 });
 
-export default selectUnitCounterSlice;
+export default selectUnitCounterSlice.reducer;
 export const { select, unselect } = selectUnitCounterSlice.actions;
