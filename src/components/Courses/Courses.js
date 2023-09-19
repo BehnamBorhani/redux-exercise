@@ -302,6 +302,52 @@ const Courses = () => {
           </div>
         </Box>
       </Modal>
+
+      {/* Delete Modal */}
+      <Modal
+        open={openModals.delete}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, delete: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            حذف درس
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            آیا از حذف این درس مطمعن هستید؟
+          </Typography>
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                removeCourse(course.id);
+                if (!isRemovingCourse) {
+                  setOpenModals((prevState) => ({
+                    ...prevState,
+                    delete: false,
+                  }));
+                }
+              }}
+              variant="contained"
+              color="error"
+            >
+              بله
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, delete: false }))
+              }
+              variant="contained"
+              color="success"
+            >
+              خیر
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 };
