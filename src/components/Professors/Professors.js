@@ -52,6 +52,22 @@ const Professors = () => {
       },
     },
     { field: "personnelID", headerName: "شماره پرسنلی", width: 200 },
+    {
+      field: "delete",
+      headerName: "حذف",
+      width: 50,
+      renderCell: (params) => {
+        return (
+          <DeleteOutlineIcon
+            className="actionIcons deleteIcon"
+            onClick={() => {
+              setProfessor(params.row);
+              setOpenModals((prevState) => ({ ...prevState, delete: true }));
+            }}
+          />
+        );
+      },
+    },
   ];
 
   return (
@@ -138,7 +154,7 @@ const Professors = () => {
               onChange={(event) =>
                 setProfessor((prevState) => ({
                   ...prevState,
-                  courses: event.target.value
+                  courses: event.target.value,
                 }))
               }
               sx={{ pb: 2 }}
@@ -178,6 +194,52 @@ const Professors = () => {
               color="error"
             >
               کنسل
+            </Button>
+          </div>
+        </Box>
+      </Modal>
+
+      {/* Delete Modal */}
+      <Modal
+        open={openModals.delete}
+        onClose={() =>
+          setOpenModals((prevState) => ({ ...prevState, delete: false }))
+        }
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            حذف استاد
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            آیا از حذف این استاد مطمعن هستید؟
+          </Typography>
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Button
+              onClick={() => {
+                removeProfessor(professor.id);
+                if (!isRemovingProfessor) {
+                  setOpenModals((prevState) => ({
+                    ...prevState,
+                    delete: false,
+                  }));
+                }
+              }}
+              variant="contained"
+              color="error"
+            >
+              بله
+            </Button>
+            <Button
+              onClick={() =>
+                setOpenModals((prevState) => ({ ...prevState, delete: false }))
+              }
+              variant="contained"
+              color="success"
+            >
+              خیر
             </Button>
           </div>
         </Box>

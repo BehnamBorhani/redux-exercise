@@ -28,8 +28,8 @@ const professorsApi = createApi({
     }),
 
     removeProfessor: builder.mutation({
-      query: (professor) => ({
-        url: `professors/${professor.id}`,
+      query: (professorID) => ({
+        url: `professors/${professorID}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Professors"],
